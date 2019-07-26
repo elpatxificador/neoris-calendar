@@ -1,5 +1,6 @@
 const MONTHS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+//Create days of month
 function* range(to, from) {
     for(var i = to; i < from; i++) {
         yield i;
@@ -13,8 +14,9 @@ function isCurrent(current, date) {
 }
 
 export function getDays(date) {
+
     if (!date) {
-        throw 'ande vas!!';
+        throw 'The day is null';
     }
     let month = date.getMonth();
     let year = date.getFullYear();
