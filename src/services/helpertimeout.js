@@ -1,12 +1,13 @@
 //Create function and call function with self (window||global) for testing (mock)
- const interval = (function(scope) {
-    debugger;
+ export const interval = (function(scope) {
     return {
         setInterval: (handler, timeout)=>scope.setInterval(handler,timeout),
         clearInterval:(intervalId)=> scope.clearInterval(intervalId),
     }
     
 }(self));
+
+export const dateSystem = new Date();
 
 /*
 
