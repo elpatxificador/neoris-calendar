@@ -6,19 +6,8 @@ class Clock extends LitElement {
         super();
     }
     
-    _render() {
+    render() {
         return html`<p>Soy un parrafo</p>`;
-    }
-
-    connectedCallback() {
-        this._render();
-    }
-
-    attributeChangedCallback(attrName, oldVal, newVal) {
-        console.log(oldVal);
-        console.log(newVal);
-        //Si mi atributo/propiedad esta definido luego asigno a ese atributo un valor
-        (attrName in this) && (this[attrName] = newVal);
     }
 }
     
