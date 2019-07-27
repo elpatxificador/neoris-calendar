@@ -31,8 +31,17 @@ class Clock extends LitElement {
 
     changeClock() {
         dateSystem.setSeconds(dateSystem.getSeconds() + (tick/1000));
-        this._time = dateSystem.getHours() + ":" + dateSystem.getMinutes() + ":" + dateSystem.getSeconds();
+        this._time = this.appendLeadingZeroes(dateSystem.getHours()) + ":" + 
+                        this.appendLeadingZeroes(dateSystem.getMinutes()) + ":" + 
+                        this.appendLeadingZeroes(dateSystem.getSeconds());
         this.requestUpdate();
+    }
+
+    appendLeadingZeroes(number){
+        if(number <= 9){
+          return "0" + number;
+        }
+        return number;
     }
 }
     
