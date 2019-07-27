@@ -9,6 +9,7 @@
   "author": "Neoris",
   "license": "ISC",
   "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.2.10",
     "lit-element": "^2.2.1"
   }
 }
