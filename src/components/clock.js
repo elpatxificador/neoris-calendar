@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { interval, dateSystem } from '../services/helpertimeout.js';
 
 const tick = 1000;
@@ -6,6 +6,15 @@ const tick = 1000;
 class Clock extends LitElement {
 
     static get properties() { return { _time: { type: String } }; }
+
+    static get styles() {
+        return css`
+        :host{
+            color: white;
+            font-size: 2rem;
+        }
+        `;
+    }
 
     constructor() {
         super();
@@ -16,7 +25,9 @@ class Clock extends LitElement {
     render() {
         console.log(this._time);
         if (!this._time) {
-            this._time = dateSystem.getHours() + ":" + dateSystem.getMinutes() + ":" + dateSystem.getSeconds();
+            this._time = this.appendLeadingZeroes(dateSystem.getHours()) + ":" + 
+                        this.appendLeadingZeroes(dateSystem.getMinutes()) + ":" + 
+                        this.appendLeadingZeroes(dateSystem.getSeconds());
         }
         return html`<p>${this._time}</p>`;
     }
