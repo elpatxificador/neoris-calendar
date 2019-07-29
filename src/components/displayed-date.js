@@ -2,8 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 import { calendarDate } from '../services/helper-displayed-date.js';
 
 class DisplayedDate extends LitElement{
-    static get properties() { return { dateDisplayed: { type: String } }; }
-
+    static get properties() { return { dateDisplayed: { type: Object } }; }
 
     constructor() {
         super();
@@ -33,26 +32,38 @@ class DisplayedDate extends LitElement{
 
     render() {
         return html`<button><i class="button ${this.direction}"></i></button>`;
+        /*
+        <p class = "arrows">
+        <neoris-arrow direction="up"></neoris-arrow>
+        <neoris-arrow direction="down"></neoris-arrow>
+        </p>
+        */
     }
 
     connectedCallback() {
         super.connectedCallback();
-        this.addEventListener('click', this.arrowClicked.bind(this));
+        this.addEventListener('arrow-event', this.arrowClicked.bind(this));
     }
 
     disconnectedCallback() {
-        this.removeEventListener('click', this.arrowClicked.bind(this));
+        this.removeEventListener('arrow-event', this.arrowClicked.bind(this));
         super.disconnectedCallback();
     }
 
     arrowClicked() {
-        let event = new CustomEvent('arrow-event', {
-            detail: this.direction,
-            bubbles: true
-            });
-        this.dispatchEvent(event);
+        if (!this.dateDisplayed) {
+            this.dateDisplayed = calendarDate;
+        }
+        if (event.detail === 'up') {  
+            calendarDate.setMonth(calendarDate.getMonth + 1);
+        } else if (event.detail === 'down') {
+            calendarDate.setMonth(calendarDate.getMonth - 1);
+        }
+        this.dateDisplayed = calendarDate;
+
+        event.stopPropagation();
     }
 
 }
 
-customElements.define('neoris-arrow', ArrowButton);
+customElements.define('neoris-displayed-date', ArrowButton);

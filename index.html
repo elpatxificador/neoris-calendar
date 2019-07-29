@@ -26,8 +26,11 @@
 
     <script>
         function clickArrow(event){
-            console.log(event)
-            event.stopPropagation();
+                if(event.detail === 'up') {
+                    
+                }
+                event.stopPropagation();
+            
         } 
         const arrowList = document.querySelector('.arrows')
         arrowList.addEventListener('arrow-event', clickArrow)
