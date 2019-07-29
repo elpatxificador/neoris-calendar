@@ -38,11 +38,11 @@ class ArrowButton extends LitElement{
 
     connectedCallback() {
         super.connectedCallback();
-        document.addEventListener('click', this.arrowClicked.bind(this));
+        this.addEventListener('click', this.arrowClicked.bind(this));
     }
 
     disconnectedCallback() {
-        document.removeEventListener('click', this.arrowClicked.bind(this));
+        this.removeEventListener('click', this.arrowClicked.bind(this));
         super.disconnectedCallback();
     }
 
