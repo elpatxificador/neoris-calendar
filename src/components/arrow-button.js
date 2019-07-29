@@ -38,20 +38,21 @@ class ArrowButton extends LitElement{
 
     connectedCallback() {
         super.connectedCallback();
-        document.addEventListener('click', this.arrowClicked);
+        document.addEventListener('click', this.arrowClicked.bind(this));
     }
 
     disconnectedCallback() {
-        document.removeEventListener('click', this.arrowClicked);
+        document.removeEventListener('click', this.arrowClicked.bind(this));
         super.disconnectedCallback();
     }
 
     arrowClicked() {
         console.log('Click en arrow');
-        let event = new CustomEvent('my-event', {
+        let event = new CustomEvent('arrow-event', {
             detail: {
-              message: 'Arrow click ', direction: this.direction
-            }
+              message: 'Arrow click ', arrow: this.direction
+            },
+            bubbles: true
           });
         this.dispatchEvent(event);
     }

@@ -18,15 +18,15 @@
 
     </neoris-clock>
     <neoris-extended-date></neoris-extended-date>
-
-    <p my-event="(e) => {console.log(e)}">
+    
+    <p>
+        <script>
+            document.addEventListener("arrow-event", function(event) { 
+                //aqui actualizar variable del calendario global 
+            });
+        </script>
         <neoris-arrow direction="up"></neoris-arrow>
         <neoris-arrow direction="down"></neoris-arrow>
     </p>
-    <script>
-        function cosa (){
-            console.log("CLICK COPON");
-        }
-    </script>
 </body>
 </html>
