@@ -14,9 +14,9 @@ class Clock extends LitElement {
     }
     
     render() {
-        console.log(this._time);
         if (!this._time) {
-            this._time = dateSystem.getHours() + ":" + dateSystem.getMinutes() + ":" + dateSystem.getSeconds();
+            this._time = this.formatTime(dateSystem.getHours(),
+             dateSystem.getMinutes(), dateSystem.getSeconds());
         }
         return html`<p>${this._time}</p>`;
     }
@@ -33,9 +33,14 @@ class Clock extends LitElement {
 
     changeClock() {
         dateSystem.setSeconds(dateSystem.getSeconds() + (tick/1000));
-        this._time = this.appendLeadingZeroes(dateSystem.getHours()) + ":" + 
-                        this.appendLeadingZeroes(dateSystem.getMinutes()) + ":" + 
-                        this.appendLeadingZeroes(dateSystem.getSeconds());
+        this._time = this.formatTime(dateSystem.getHours(),
+             dateSystem.getMinutes(), dateSystem.getSeconds());
+    }
+
+    formatTime(numberHour, numberMin, numberSec) {
+        return this.appendLeadingZeroes(numberHour) + ":"
+        + this.appendLeadingZeroes(numberMin) + ":" + 
+        this.appendLeadingZeroes(numberSec);
     }
 
     appendLeadingZeroes(number){
