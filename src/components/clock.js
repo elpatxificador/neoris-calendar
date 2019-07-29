@@ -5,6 +5,8 @@ const tick = 1000;
 
 class Clock extends LitElement {
 
+    static get properties() { return { _time: { type: String } }; }
+
     constructor() {
         super();
         this._intervalID = 0;
@@ -34,7 +36,6 @@ class Clock extends LitElement {
         this._time = this.appendLeadingZeroes(dateSystem.getHours()) + ":" + 
                         this.appendLeadingZeroes(dateSystem.getMinutes()) + ":" + 
                         this.appendLeadingZeroes(dateSystem.getSeconds());
-        this.requestUpdate();
     }
 
     appendLeadingZeroes(number){
