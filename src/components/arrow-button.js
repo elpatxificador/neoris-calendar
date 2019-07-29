@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 
-class ArrowButton extends LitElement{
+export class ArrowButton extends LitElement{
     static get properties() { return {
         direction: { type: String }
       };

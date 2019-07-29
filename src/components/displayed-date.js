@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 import { calendarDate } from '../services/helper-displayed-date.js';
+import { ArrowButton } from '../components/arrow-button.js';
 
 class DisplayedDate extends LitElement{
     static get properties() { return { dateDisplayed: { type: Object } }; }
@@ -11,33 +12,28 @@ class DisplayedDate extends LitElement{
     
     static get styles() {
         return css `
-        .button {
-            border: solid black;
-            border-width: 0 3px 3px 0;
-            display: inline-block;
-            padding: 3px;
+        :host {
+            display: flex;
         }
-        
-        .up {
-          transform: rotate(-135deg);
-          -webkit-transform: rotate(-135deg);
+        .month {
+            flex: 10;
         }
-        
-        .down {
-          transform: rotate(45deg);
-          -webkit-transform: rotate(45deg);
+        .arrows {
+            flex: 2;
         }
         `;
     }
 
     render() {
-        return html`<button><i class="button ${this.direction}"></i></button>`;
-        /*
-        <p class = "arrows">
-        <neoris-arrow direction="up"></neoris-arrow>
-        <neoris-arrow direction="down"></neoris-arrow>
-        </p>
-        */
+        return html`
+        <div class="month">
+            <button>Button 1</button>
+        </div>
+        <div class="arrows">
+            <neoris-arrow direction="up"></neoris-arrow>
+            <neoris-arrow direction="down"></neoris-arrow>
+        </div>
+        `;
     }
 
     connectedCallback() {
@@ -66,4 +62,5 @@ class DisplayedDate extends LitElement{
 
 }
 
-customElements.define('neoris-displayed-date', ArrowButton);
+customElements.define('neoris-displayed-date', DisplayedDate);
+

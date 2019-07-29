@@ -9,7 +9,7 @@
     <script type="module" src="./src/components/clock.js"></script>
 
     <script type="module" src="./src/components/extendeddate.js"></script>
-    <script type="module" src="./src/components/arrow-button.js"></script>
+    <script type="module" src="./src/components/displayed-date.js"></script>
 </head>
 <body style="background-color: black">
     <h2 style="color: white">Calendario Javascript con LitElement</h2>
@@ -18,22 +18,28 @@
 
     </neoris-clock>
     <neoris-extended-date></neoris-extended-date>
-    
+
+    <neoris-displayed-date></neoris-displayed-date>
+    <!--
     <p class = "arrows">
         <neoris-arrow direction="up"></neoris-arrow>
         <neoris-arrow direction="down"></neoris-arrow>
     </p>
 
+
+
+    
+
     <script>
         function clickArrow(event){
-                if(event.detail === 'up') {
-                    
-                }
-                event.stopPropagation();
-            
+            if(event.detail === 'up') {
+                console.log(event.target)
+            }
+            event.stopPropagation();
         } 
         const arrowList = document.querySelector('.arrows')
         arrowList.addEventListener('arrow-event', clickArrow)
     </script>
+-->
 </body>
 </html>
