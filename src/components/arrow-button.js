@@ -47,13 +47,10 @@ class ArrowButton extends LitElement{
     }
 
     arrowClicked() {
-        console.log('Click en arrow');
         let event = new CustomEvent('arrow-event', {
-            detail: {
-              message: 'Arrow click ', arrow: this.direction
-            },
+            detail: this.direction,
             bubbles: true
-          });
+            });
         this.dispatchEvent(event);
     }
 

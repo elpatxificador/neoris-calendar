@@ -19,14 +19,18 @@
     </neoris-clock>
     <neoris-extended-date></neoris-extended-date>
     
-    <p>
-        <script>
-            document.addEventListener("arrow-event", function(event) { 
-                //aqui actualizar variable del calendario global 
-            });
-        </script>
+    <p class = "arrows">
         <neoris-arrow direction="up"></neoris-arrow>
         <neoris-arrow direction="down"></neoris-arrow>
     </p>
+
+    <script>
+        function clickArrow(event){
+            console.log(event)
+            event.stopPropagation();
+        } 
+        const arrowList = document.querySelector('.arrows')
+        arrowList.addEventListener('arrow-event', clickArrow)
+    </script>
 </body>
 </html>
